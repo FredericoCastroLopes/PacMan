@@ -29,6 +29,8 @@ public class ArenaController extends GameController {
         int FPS = 20;
         int frameTime = 1000 / FPS;
         long lastMonsterMovement = 0;
+        GUI.ACTION last_action = GUI.ACTION.NONE;
+        GUI.ACTION saved_action = GUI.ACTION.NONE;
 
         while (getArena().getPacman().getEnergy() > 0) {
             long startTime = System.currentTimeMillis();
@@ -38,7 +40,22 @@ public class ArenaController extends GameController {
             GUI.ACTION action = gui.getNextAction();
             if (action == GUI.ACTION.QUIT) break;
 
-            pacmanController.doAction(action);
+            if(action != GUI.ACTION.NONE){
+                if(pacmanController.doAction(action)) {
+                    last_action = action;
+                }else{
+                    saved_action = action;
+                }
+            }else {
+                if(pacmanController.doAction(saved_action)) {
+                    last_action = saved_action;
+                    saved_action = GUI.ACTION.NONE;
+                }else{
+                    pacmanController.doAction(last_action);
+                }
+            }
+
+
             if (startTime - lastMonsterMovement > 500) {
                 ghostController.moveMonsters();
                 lastMonsterMovement = startTime;

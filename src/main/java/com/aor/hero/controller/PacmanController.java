@@ -39,11 +39,18 @@ public class PacmanController extends GameController {
         }
     }
 
-    public void doAction(GUI.ACTION action) {
+    public boolean doAction(GUI.ACTION action) {
+        Position initial = arena.getPacman().getPosition();
         if (action == GUI.ACTION.UP) moveHeroUp();
         if (action == GUI.ACTION.RIGHT) moveHeroRight();
         if (action == GUI.ACTION.DOWN) moveHeroDown();
         if (action == GUI.ACTION.LEFT) moveHeroLeft();
+        Position after = arena.getPacman().getPosition();
+        if(initial.equals(after)){
+           return false;
+        }else{
+            return true;
+        }
     }
 
 }
