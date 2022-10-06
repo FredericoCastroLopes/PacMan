@@ -11,14 +11,17 @@ public class GhostController extends GameController {
 
     public void moveMonsters() {
         for (Ghost ghost : arena.getGhosts())
-            moveMonster(ghost, ghost.getPosition().getRandomNeighbour());
+            moveMonster(ghost);
     }
 
-    private void moveMonster(Ghost ghost, Position position) {
-        if (arena.isEmpty(position)) {
+    private void moveMonster(Ghost ghost) {
+        Position position;
+        do {
+            position = ghost.getPosition().getRandomNeighbour();
+        }while (!arena.isEmpty(position));
             ghost.setPosition(position);
+            teletransport(ghost);
             if (arena.getPacman().getPosition().equals(position))
                 arena.getPacman().decreaseEnergy();
         }
-    }
 }

@@ -3,6 +3,7 @@ package com.aor.hero.controller;
 import com.aor.hero.gui.GUI;
 import com.aor.hero.model.Position;
 import com.aor.hero.model.arena.Arena;
+import com.aor.hero.model.elements.Element;
 
 public class PacmanController extends GameController {
     public PacmanController(Arena arena) {
@@ -28,15 +29,9 @@ public class PacmanController extends GameController {
     private void movePacman(Position position) {
         if (arena.isEmpty(position)) {
             arena.getPacman().setPosition(position);
-            System.out.printf(arena.getPacman().getPosition().getX() + "   " + arena.getPacman().getPosition().getY());
 
             //Teletransport
-            if (arena.getPacman().getPosition().getX() == 21 && arena.getPacman().getPosition().getY() == 9){
-                arena.getPacman().setPosition(new Position(0,9));
-            } else if (arena.getPacman().getPosition().getX() == -1 && arena.getPacman().getPosition().getY() == 9) {
-                arena.getPacman().setPosition(new Position(20,9));
-            }
-
+            teletransport(arena.getPacman());
 
             //Remove food and decrease energy
             arena.retrieveFood();
@@ -50,4 +45,5 @@ public class PacmanController extends GameController {
         if (action == GUI.ACTION.DOWN) moveHeroDown();
         if (action == GUI.ACTION.LEFT) moveHeroLeft();
     }
+
 }
