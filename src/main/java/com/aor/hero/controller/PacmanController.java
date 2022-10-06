@@ -53,4 +53,11 @@ public class PacmanController extends GameController {
         }
     }
 
+    public void changeSide(GUI.ACTION action){
+        if (action == GUI.ACTION.UP) arena.getPacman().setSide('x');
+        if (action == GUI.ACTION.RIGHT) arena.getPacman().setSide('p');
+        if (action == GUI.ACTION.DOWN) arena.getPacman().setSide('z');
+        if (action == GUI.ACTION.LEFT) arena.getPacman().setSide('y');
+    }
+
 }

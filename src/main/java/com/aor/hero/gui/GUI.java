@@ -7,7 +7,7 @@ import java.io.IOException;
 public interface GUI {
     ACTION getNextAction() throws IOException;
 
-    void drawPacman(Position position);
+    void drawPacman(Position position, char side);
 
     void drawWall(Position position);
 

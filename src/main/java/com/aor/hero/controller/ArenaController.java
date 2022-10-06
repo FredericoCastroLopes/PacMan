@@ -26,7 +26,7 @@ public class ArenaController extends GameController {
     }
 
     public void start() throws IOException {
-        int FPS = 20;
+        int FPS = 12;
         int frameTime = 1000 / FPS;
         long lastMonsterMovement = 0;
         GUI.ACTION last_action = GUI.ACTION.NONE;
@@ -43,8 +43,10 @@ public class ArenaController extends GameController {
             if(action != GUI.ACTION.NONE){
                 if(pacmanController.doAction(action)) {
                     last_action = action;
+                    saved_action = GUI.ACTION.NONE;
                 }else{
                     saved_action = action;
+                    continue;
                 }
             }else {
                 if(pacmanController.doAction(saved_action)) {
@@ -55,8 +57,10 @@ public class ArenaController extends GameController {
                 }
             }
 
+            //ChangeSide
+            pacmanController.changeSide(last_action);
 
-            if (startTime - lastMonsterMovement > 500) {
+            if (startTime - lastMonsterMovement > 250) {
                 ghostController.moveMonsters();
                 lastMonsterMovement = startTime;
             }
