@@ -60,8 +60,8 @@ public class ArenaController extends GameController {
             //ChangeSide
             pacmanController.changeSide(last_action);
 
-            if (startTime - lastMonsterMovement > 250) {
-                ghostController.moveMonsters();
+            if (startTime - lastMonsterMovement > 200) {
+                ghostController.moveGhosts();
                 lastMonsterMovement = startTime;
             }
 

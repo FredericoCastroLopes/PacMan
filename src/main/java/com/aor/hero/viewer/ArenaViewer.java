@@ -24,7 +24,7 @@ public class ArenaViewer {
         drawElement(arena.getPacman(), new PacmanViewer());
 
 
-        gui.drawText(new Position(0, 0), "Energy: " + arena.getPacman().getEnergy(), "#FFD700");
+        gui.drawText(new Position(0, 0), "LIFES: " + arena.getPacman().getEnergy(), "#FFD700");
 
         gui.refresh();
     }
