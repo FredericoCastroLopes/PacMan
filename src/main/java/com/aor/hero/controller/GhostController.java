@@ -28,7 +28,7 @@ public class GhostController extends GameController {
         int dist_y = chasing_pos.getY() - ghost.getPosition().getY();
 
 
-        //Inside the box exceptions
+            //Inside the box exceptions
         if (ghost.isAlive() && (ghost.getPosition().equals(new Position(10, 8)) || ghost.getPosition().equals(new Position(10, 9)))) {
             new_position = new Position(ghost.getPosition().getX(), ghost.getPosition().getY() - 1);
             ghost.setPosition(new_position);
@@ -38,6 +38,25 @@ public class GhostController extends GameController {
         } else if (ghost.isAlive() && (ghost.getPosition().equals(new Position(9, 8)))) {
             new_position = new Position(ghost.getPosition().getX() + 1, ghost.getPosition().getY());
             ghost.setPosition(new_position);
+
+
+            //Deads exceptions
+        } else if (!ghost.isAlive() && (ghost.getPosition().equals(new Position(15,9)))) {
+                ghost.setPosition(new Position(ghost.getPosition().getX()-1, ghost.getPosition().getY()));
+
+        } else if (!ghost.isAlive() && (ghost.getPosition().equals(new Position(5,9)))) {
+            ghost.setPosition(new Position(ghost.getPosition().getX()+1, ghost.getPosition().getY()));
+
+        } else if (!ghost.isAlive() && ghost.getPosition().getY()>=9) {
+            new_position = new Position(ghost.getPosition().getX(), ghost.getPosition().getY() - 1);
+            if (arena.isEmpty(new_position)) {
+                ghost.setPosition(new_position);
+            }
+        } else if (!ghost.isAlive() && (ghost.getPosition().getY() == 2 || ghost.getPosition().getY() == 4)) {
+            new_position = new Position(ghost.getPosition().getX(), ghost.getPosition().getY() + 1);
+            if (arena.isEmpty(new_position)) {
+                ghost.setPosition(new_position);
+            }
 
 
             // Follow the pacman

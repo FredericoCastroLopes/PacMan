@@ -13,6 +13,7 @@ public class Ghost extends Element {
         super(x, y);
         this.last_position = getPosition();
         this.isPowerON = false;
+        alive = true;
     }
 
     public boolean isAlive() {
