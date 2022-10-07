@@ -15,6 +15,7 @@ import java.net.URISyntaxException;
 
 public class PlayController implements StateController {
 
+    private int score;
     private final Controller context;
     public PlayController(Controller context){
         this.context = context;
@@ -29,7 +30,7 @@ public class PlayController implements StateController {
         ArenaController controller = new ArenaController(arena, viewer, gui);
 
         controller.start();
-        int score = controller.arena.getPacman().getScore();
+        this.score = controller.arena.getPacman().getScore();
         nextState();
     }
 
@@ -37,6 +38,6 @@ public class PlayController implements StateController {
     @Override
     public void nextState() {
         context.changeState(ApplicationState.GameOver);
-        ((GameOverController)context.getStateControler()).setScore(110);//To be changes
+        ((GameOverController)context.getStateControler()).setScore(this.score);//To be changes
     }
 }

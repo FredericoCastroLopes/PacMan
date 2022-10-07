@@ -83,8 +83,7 @@ public class GameOverController implements StateController, KeyListener {
 
     public void updateLeaderboard(String path) {
         int line = 0;
-        int newRank = 0;
-
+        int newRank = 1;
         try {
             File myObj = new File(Constants.ROOT+path);
             Scanner myReader = new Scanner(myObj, Charset.defaultCharset().name());
@@ -95,7 +94,7 @@ public class GameOverController implements StateController, KeyListener {
                     Integer lineScore = Integer.parseInt(data.substring(26,31));
                     score.add(lineScore);
                     if(newScore <= lineScore)
-                        newRank = line - 1;
+                        newRank = line-1;
                     name.add(data.substring(8,26));
                 }
             }
@@ -108,7 +107,7 @@ public class GameOverController implements StateController, KeyListener {
     }
 
     private void addToLeaderBoard(int newRank){
-        if(newRank > 0 && newRank <= 10) { // se ficar nos 10 melhores
+        if(newRank >= 0 && newRank < 10) { // se ficar nos 10 melhores
             score.add(newRank-1, newScore);
             name.add(newRank-1,nickName + " ".repeat(Math.max(0, 18 - nickName.length())));
             score.remove(10);
