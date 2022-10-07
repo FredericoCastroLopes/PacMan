@@ -88,6 +88,7 @@ public class Arena {
         for (int i = 0; i < this.foods.size(); i++) {
             if (pacman.getPosition().equals(foods.get(i).getPosition())) {
                 this.foods.remove(i);
+                pacman.increaseScore(10);
             }
         }
     }

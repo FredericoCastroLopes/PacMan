@@ -24,7 +24,12 @@ public class ArenaViewer {
         drawElement(arena.getPacman(), new PacmanViewer());
 
 
-        gui.drawText(new Position(0, 0), "LIFES: " + arena.getPacman().getEnergy(), "#FFD700");
+        //LIFE AND SCORE
+        gui.drawText(new Position(0, 0), "LIFES:" + arena.getPacman().getLifes(), "#FF0000");
+        for (int i = 0; i<arena.getPacman().getLifes(); i++){
+            gui.drawText(new Position(i+6,0),"h","#FF0000" );
+        }
+        gui.drawText(new Position(11,0), "SCORE:" + arena.getPacman().scoretoString(), "#FFD700");
 
         gui.refresh();
     }

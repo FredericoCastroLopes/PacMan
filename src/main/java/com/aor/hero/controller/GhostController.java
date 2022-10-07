@@ -63,7 +63,7 @@ public class GhostController extends GameController {
 
         //Lose lifes
         if (arena.getPacman().getPosition().equals(ghost.getPosition())) {
-            arena.getPacman().decreaseEnergy();
+            arena.getPacman().decreaseLifes();
         }
     }
 }

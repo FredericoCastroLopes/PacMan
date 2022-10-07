@@ -3,7 +3,6 @@ package com.aor.hero.controller;
 import com.aor.hero.gui.GUI;
 import com.aor.hero.model.Position;
 import com.aor.hero.model.arena.Arena;
-import com.aor.hero.model.elements.Element;
 
 public class PacmanController extends GameController {
     public PacmanController(Arena arena) {
@@ -35,7 +34,7 @@ public class PacmanController extends GameController {
 
             //Remove food and decrease energy
             arena.retrieveFood();
-            if (arena.isGhost(position)) arena.getPacman().decreaseEnergy();
+            if (arena.isGhost(position)) arena.getPacman().decreaseLifes();
         }
     }
 

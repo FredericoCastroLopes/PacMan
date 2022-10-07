@@ -32,7 +32,7 @@ public class ArenaController extends GameController {
         GUI.ACTION last_action = GUI.ACTION.NONE;
         GUI.ACTION saved_action = GUI.ACTION.NONE;
 
-        while (getArena().getPacman().getEnergy() > 0) {
+        while (getArena().getPacman().getLifes() > 0) {
             long startTime = System.currentTimeMillis();
 
             viewer.draw(getArena());
