@@ -29,6 +29,7 @@ public class ArenaController extends GameController {
         int FPS = 12;
         int frameTime = 1000 / FPS;
         long lastMonsterMovement = 0;
+        long powerStatus = 0;
         GUI.ACTION last_action = GUI.ACTION.NONE;
         GUI.ACTION saved_action = GUI.ACTION.NONE;
 
@@ -63,6 +64,16 @@ public class ArenaController extends GameController {
             if (startTime - lastMonsterMovement > 200) {
                 ghostController.moveGhosts();
                 lastMonsterMovement = startTime;
+            }
+
+            if (arena.getPacman().isPower_status()){
+                powerStatus +=1;
+            }
+
+            if (powerStatus>=120){
+                pacmanController.setPowerOFF();
+                ghostController.arena.notifyGhosts(false);
+                powerStatus = 0;
             }
 
             long elapsedTime = System.currentTimeMillis() - startTime;

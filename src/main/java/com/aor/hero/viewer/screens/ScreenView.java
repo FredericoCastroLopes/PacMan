@@ -14,6 +14,7 @@ import com.aor.hero.viewer.game.Color;
 
 import java.awt.*;
 import java.awt.event.KeyListener;
+import java.io.File;
 import java.io.IOException;
 
 public abstract class ScreenView{
@@ -90,5 +91,21 @@ public abstract class ScreenView{
 
     public void setFont(Font font) {
         this.font = font;
+    }
+
+    public Font changeFont(String path, int size){
+        File fontFile = new File(path);
+        Font font = null;
+        try {
+            font = Font.createFont(Font.TRUETYPE_FONT,fontFile);
+        } catch (FontFormatException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        ge.registerFont(font);
+        Font loaded = font.deriveFont(Font.PLAIN,size);
+        return loaded;
     }
 }

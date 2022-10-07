@@ -20,6 +20,7 @@ public class ArenaViewer {
 
         drawElements(arena.getWalls(), new WallViewer());
         drawElements(arena.getFoods(), new FoodViewer());
+        drawElements(arena.getPowers(), new PowerViewer());
         drawElements(arena.getGhosts(), new GhostViewer());
         drawElement(arena.getPacman(), new PacmanViewer());
 

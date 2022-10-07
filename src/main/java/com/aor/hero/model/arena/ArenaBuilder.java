@@ -1,9 +1,6 @@
 package com.aor.hero.model.arena;
 
-import com.aor.hero.model.elements.Food;
-import com.aor.hero.model.elements.Pacman;
-import com.aor.hero.model.elements.Ghost;
-import com.aor.hero.model.elements.Wall;
+import com.aor.hero.model.elements.*;
 
 import java.util.List;
 
@@ -15,6 +12,7 @@ public abstract class ArenaBuilder {
         arena.setGhosts(createGhosts());
         arena.setWalls(createWalls());
         arena.setFoods(createFoods());
+        arena.setPowers(createPowers());
 
         return arena;
     }
@@ -26,6 +24,8 @@ public abstract class ArenaBuilder {
     protected abstract List<Wall> createWalls();
 
     protected abstract List<Food> createFoods();
+
+    protected abstract List<Power> createPowers();
 
     protected abstract List<Ghost> createGhosts();
 

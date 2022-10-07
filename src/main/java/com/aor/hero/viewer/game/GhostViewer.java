@@ -6,6 +6,6 @@ import com.aor.hero.model.elements.Ghost;
 public class GhostViewer implements ElementViewer<Ghost> {
     @Override
     public void drawElement(Ghost ghost, GUI gui) {
-        gui.drawGhost(ghost.getPosition());
+        gui.drawGhost(ghost.getPosition(), ghost.isAlive(), ghost.isPowerON());
     }
 }

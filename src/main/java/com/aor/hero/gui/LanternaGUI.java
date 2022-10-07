@@ -18,6 +18,8 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 public class LanternaGUI implements GUI {
+
+    private boolean powerON = false;
     private final TerminalScreen screen;
 
     public LanternaGUI(int width, int height) throws IOException, FontFormatException, URISyntaxException {
@@ -85,13 +87,27 @@ public class LanternaGUI implements GUI {
     }
 
     @Override
-    public void drawGhost(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'g', "#CC0000");
+    public void drawGhost(Position position, boolean isAlive, boolean isPowerON) {
+        if (isAlive) {
+            if(isPowerON){
+                drawCharacter(position.getX(), position.getY(), 'g', "#FFFFFF");
+            }else {
+                drawCharacter(position.getX(), position.getY(), 'g', "#CC0000");
+            }
+        }else {
+            drawCharacter(position.getX(), position.getY(), 'd', "#FFFFFF");
+        }
     }
+
 
     @Override
     public void drawFood(Position position) {
         drawCharacter(position.getX(), position.getY(), 'o', "#FFFFFF");
+    }
+
+    @Override
+    public void drawPower(Position position){
+        drawCharacter(position.getX(), position.getY(), 's', "#FFFFFF");//DAA520
     }
 
     @Override

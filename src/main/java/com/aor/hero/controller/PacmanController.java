@@ -34,7 +34,8 @@ public class PacmanController extends GameController {
 
             //Remove food and decrease energy
             arena.retrieveFood();
-            if (arena.isGhost(position)) arena.getPacman().decreaseLifes();
+            arena.retrievePowers();
+            arena.isGhost();
         }
     }
 
@@ -57,6 +58,11 @@ public class PacmanController extends GameController {
         if (action == GUI.ACTION.RIGHT) arena.getPacman().setSide('p');
         if (action == GUI.ACTION.DOWN) arena.getPacman().setSide('z');
         if (action == GUI.ACTION.LEFT) arena.getPacman().setSide('y');
+    }
+
+
+    public void setPowerOFF(){
+        arena.getPacman().setPower_status(false);
     }
 
 }

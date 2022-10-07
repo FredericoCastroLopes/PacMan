@@ -11,10 +11,11 @@ public interface GUI {
 
     void drawWall(Position position);
 
-    void drawGhost(Position position);
-
+    void drawGhost(Position position, boolean isAlive, boolean isPowerON);
 
     void drawFood(Position position);
+
+    void drawPower(Position position);
 
     void drawText(Position position, String text, String color);
 
@@ -25,4 +26,5 @@ public interface GUI {
     void close() throws IOException;
 
     enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT}
+
 }

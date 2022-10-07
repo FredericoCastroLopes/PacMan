@@ -1,9 +1,6 @@
 package com.aor.hero.model.arena;
 
-import com.aor.hero.model.elements.Food;
-import com.aor.hero.model.elements.Pacman;
-import com.aor.hero.model.elements.Ghost;
-import com.aor.hero.model.elements.Wall;
+import com.aor.hero.model.elements.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -69,6 +66,19 @@ public class LoaderArenaBuilder extends ArenaBuilder {
         }
 
         return foods;
+    }
+
+    @Override
+    protected List<Power> createPowers(){
+        List<Power> powers = new ArrayList<>();
+
+        for (int y = 0; y < lines.size(); y++) {
+            String line = lines.get(y);
+            for (int x = 0; x < line.length(); x++)
+                if (line.charAt(x) == 'S') powers.add(new Power(x, y));
+        }
+
+        return powers;
     }
 
     @Override

@@ -23,7 +23,7 @@ public class MenuScreen extends ScreenView {
 
     public MenuScreen(Menu menu){
         this.menu = menu;
-        setFont(changeFont());
+        setFont(changeFont("src/main/resources/fonts/origap__.ttf", 25));
         play = new MenuItemView(MenuItem.Play);
         leaderBoard = new MenuItemView(MenuItem.LeaderBoard);
         instructions = new MenuItemView(MenuItem.Instructions);
@@ -111,20 +111,6 @@ public class MenuScreen extends ScreenView {
         return new TerminalSize(30, 20);
     }
 
-    public Font changeFont(){
-        File fontFile = new File("src/main/resources/fonts/origap__.ttf");
-        Font font = null;
-        try {
-            font = Font.createFont(Font.TRUETYPE_FONT,fontFile);
-        } catch (FontFormatException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        ge.registerFont(font);
-        Font loaded = font.deriveFont(Font.PLAIN,25);
-        return loaded;
-    }
+
 
 }

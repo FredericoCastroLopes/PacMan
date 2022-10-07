@@ -7,11 +7,14 @@ public class Pacman extends Element {
 
     private char side;
 
+    private boolean power_status;
+
     public Pacman(int x, int y) {
         super(x, y);
         this.lifes = 3;
         this.score = 0;
         this.side = 'p';
+        this.power_status = false;
     }
 
     public void decreaseLifes() {
@@ -28,6 +31,14 @@ public class Pacman extends Element {
 
     public void setSide(char side) {
         this.side = side;
+    }
+
+    public boolean isPower_status() {
+        return power_status;
+    }
+
+    public void setPower_status(boolean power_status) {
+        this.power_status = power_status;
     }
 
     public int getScore() {
