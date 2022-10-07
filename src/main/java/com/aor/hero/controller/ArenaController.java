@@ -2,7 +2,7 @@ package com.aor.hero.controller;
 
 import com.aor.hero.gui.GUI;
 import com.aor.hero.model.arena.Arena;
-import com.aor.hero.viewer.ArenaViewer;
+import com.aor.hero.viewer.game.ArenaViewer;
 
 import java.io.IOException;
 

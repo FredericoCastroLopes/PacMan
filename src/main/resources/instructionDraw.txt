@@ -1,0 +1,24 @@
+======I N S T R U C T I O N S========
+||                                 ||
+||         GAME OBJECTIVE:         ||
+||    Catch all the food in the    ||
+||    map before the ghosts can    ||
+||      catch you... 3 LIFES!      ||
+||    After you get every piece    ||
+||   you pass to the next level!   ||
+||    Each level is harder than    ||
+||   the one before. If you pass   ||
+||       all levels you are:       ||
+||                                 ||
+||           THE WINNER!           ||
+||                                 ||
+||       GAMEPLAY CONTROLS:        ||
+||                                 ||
+||  ARROW_UP    --> TURNS FORWARD  ||
+||  ARROW_DOWN  --> TURNS DOWN     ||
+||  ARROW_LEFT  --> TURNS LEFT     ||
+||  ARROW_RIGHT --> TURNS RIGHT    ||
+||  ESC         --> QUIT GAME      ||
+||                                 ||
+||      PRESS ESC TO GO BACK       ||
+=====================================
