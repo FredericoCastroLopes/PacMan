@@ -67,7 +67,18 @@ public class PacmanTest {
         pacman.increaseScore(150);
 
         Assertions.assertEquals(150, pacman.getScore());
-
     }
+
+    /*@Test
+    void scoreToString() {
+
+        Pacman pacmanMockito = Mockito.mock(Pacman.class);
+        Mockito.when(pacmanMockito.getScore()).thenReturn(2);
+
+        pacmanMockito.scoretoString();
+
+        Assertions.assertEquals("00002", pacmanMockito.scoretoString());
+
+    }*/
 
 }
