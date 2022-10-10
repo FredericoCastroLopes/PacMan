@@ -3,10 +3,7 @@ package com.aor.hero.viewer;
 import com.aor.hero.gui.GUI;
 import com.aor.hero.model.Position;
 import com.aor.hero.model.elements.*;
-import com.aor.hero.viewer.game.FoodViewer;
-import com.aor.hero.viewer.game.GhostViewer;
-import com.aor.hero.viewer.game.PacmanViewer;
-import com.aor.hero.viewer.game.PowerViewer;
+import com.aor.hero.viewer.game.*;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -69,5 +66,20 @@ public class GameViewerTest {
 
         //then
         Mockito.verify(guiMockito,Mockito.times(1)).drawPower(new Position(2,1));
+    }
+
+    @Test
+    void drawElement_wall(){
+        //given
+        Wall wallMockito = Mockito.mock(Wall.class);
+        Mockito.when(wallMockito.getPosition()).thenReturn(new Position(2,0));
+        WallViewer wallViewer = Mockito.spy(new WallViewer());
+
+        //when
+        wallViewer.drawElement(wallMockito, guiMockito);
+
+        //then
+        Mockito.verify(guiMockito,Mockito.times(1)).drawWall(new Position(2,0));
+
     }
 }

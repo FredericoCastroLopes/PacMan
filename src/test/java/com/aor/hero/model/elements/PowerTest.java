@@ -1,2 +1,4 @@
-package com.aor.hero.model.elements;public class PowerTest {
+package com.aor.hero.model.elements;
+
+public class PowerTest {
 }

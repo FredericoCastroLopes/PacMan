@@ -26,8 +26,9 @@ public class ArenaViewer {
 
 
         //LIFE AND SCORE
-        gui.drawText(new Position(0, 0), "LIFES:" + arena.getPacman().getLifes(), "#FF0000");
-        for (int i = 0; i<arena.getPacman().getLifes(); i++){
+        int lifes = arena.getPacman().getLifes();
+        gui.drawText(new Position(0, 0), "LIFES:" + lifes, "#FF0000");
+        for (int i = 0; i<lifes; i++){
             gui.drawText(new Position(i+6,0),"h","#FF0000" );
         }
         gui.drawText(new Position(11,0), "SCORE:" + arena.getPacman().scoretoString(), "#FFD700");
@@ -35,7 +36,7 @@ public class ArenaViewer {
         gui.refresh();
     }
 
-    private <T extends Element> void drawElements(List<T> elements, ElementViewer<T> viewer) {
+    private  <T extends Element> void drawElements(List<T> elements, ElementViewer<T> viewer) {
         for (T element : elements)
             drawElement(element, viewer);
     }
