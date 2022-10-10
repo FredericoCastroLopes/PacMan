@@ -17,7 +17,7 @@ application {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
-
+    testImplementation 'org.mockito:mockito-inline:3.7.7'
     implementation group: 'com.googlecode.lanterna', name: 'lanterna', version: '3.1.1'
 }
 
