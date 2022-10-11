@@ -1,17 +1,19 @@
 plugins {
     id 'java'
     id 'application'
+    id 'info.solidsoft.pitest' version '1.6.0'
 }
 
 group 'com.aor.hero'
 version '1.0'
+
 
 repositories {
     mavenCentral()
 }
 
 application {
-    mainClass.set('com.aor.hero.Game')
+    mainClass = 'com.aor.hero.Application'
 }
 
 dependencies {
@@ -23,4 +25,10 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+pitest {
+    junit5PluginVersion = '0.12'
+    pitestVersion = '1.7.4'
+    excludedClasses =['com.aor.hero.Application']
 }

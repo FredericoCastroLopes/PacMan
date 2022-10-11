@@ -18,14 +18,9 @@ public class GhostController extends GameController {
 
     private void moveGhost(Ghost ghost) {
         Position new_position;
-        Position chasing_pos;
-        if(ghost.isAlive()){
-            chasing_pos = arena.getPacman().getPosition();
-        }else {
-            chasing_pos = new Position(10,8);
-        }
-
+        Position chasing_pos = chasingPosition(ghost);
         Position ghost_pos = ghost.getPosition();
+
         int dist_x = chasing_pos.getX() - ghost.getPosition().getX();
         int dist_y = chasing_pos.getY() - ghost.getPosition().getY();
 
@@ -62,13 +57,13 @@ public class GhostController extends GameController {
 
 
             // Follow the pacman
-        } else if (Math.abs(dist_y) > Math.abs(dist_x) && dist_y != 0) {
+        } else if (Math.abs(dist_y) > Math.abs(dist_x) && dist_y != 0 && !ghost.isPowerON()) {
             new_position = new Position(ghost.getPosition().getX(), ghost.getPosition().getY() + (dist_y / Math.abs(dist_y)));
             if (arena.isEmpty(new_position) && !(new_position.equals(ghost.getLast_position()))) {
                 ghost.setPosition(new_position);
                 teletransport(ghost);
             }
-        } else if (Math.abs(dist_x) > Math.abs(dist_y) && dist_x != 0) {
+        } else if (Math.abs(dist_x) > Math.abs(dist_y) && dist_x != 0 && !ghost.isPowerON()) {
             new_position = new Position(ghost.getPosition().getX() + (dist_x / Math.abs(dist_x)), ghost.getPosition().getY());
             if (arena.isEmpty(new_position) && !(new_position.equals(ghost.getLast_position()))) {
                 ghost.setPosition(new_position);
@@ -87,8 +82,14 @@ public class GhostController extends GameController {
             teletransport(ghost);
         }
 
+        //Lose lifes & Kill ghosts
+        LoseLifes_KillGhosts(ghost);
 
-        //Lose lifes
+        //Reborn
+        rebornGhost(ghost);
+    }
+
+    private void LoseLifes_KillGhosts(Ghost ghost){
         if (arena.getPacman().getPosition().equals(ghost.getPosition())) {
             if (arena.getPacman().isPower_status()) {
                 ghost.setAlive(false);
@@ -102,10 +103,21 @@ public class GhostController extends GameController {
                 }
             }
         }
+    }
 
-        //Reborn
+    private void rebornGhost(Ghost ghost){
         if(ghost.getPosition().equals(new Position(10,8))){
             ghost.setAlive(true);
         }
+    }
+
+    private Position chasingPosition(Ghost ghost){
+        Position chasing_pos;
+        if(ghost.isAlive()){
+            chasing_pos = arena.getPacman().getPosition();
+        }else {
+            chasing_pos = new Position(10,8);
+        }
+        return chasing_pos;
     }
 }

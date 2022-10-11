@@ -70,7 +70,7 @@ public class PacmanControllerTest {
     }
 
     @Test
-    void setPowerOFF(){
+    void setPowerOFF_getArena(){
         Arena arena = Mockito.mock(Arena.class);
         Pacman pacman = new Pacman(10,10);
         pacman.setPower_status(true);
@@ -86,6 +86,8 @@ public class PacmanControllerTest {
 
         //Then
         Assertions.assertEquals(false, pacman.isPower_status());
+
+        Assertions.assertEquals(arena,pacmanController.getArena());
 
     }
 }
