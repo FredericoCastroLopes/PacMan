@@ -1,5 +1,7 @@
 package com.aor.hero.controller;
 
+import com.aor.hero.controller.Sound.MusicManager;
+import com.aor.hero.controller.Sound.Sounds;
 import com.aor.hero.model.Position;
 import com.aor.hero.model.arena.Arena;
 import com.aor.hero.model.elements.Ghost;
@@ -90,8 +92,14 @@ public class GhostController extends GameController {
         if (arena.getPacman().getPosition().equals(ghost.getPosition())) {
             if (arena.getPacman().isPower_status()) {
                 ghost.setAlive(false);
+                if (!MusicManager.getInstance().isPlaying(Sounds.KILL)){
+                    MusicManager.getInstance().start(Sounds.KILL);
+                }
             } else {
                 arena.getPacman().decreaseLifes();
+                if (!MusicManager.getInstance().isPlaying(Sounds.LOSELIFE)){
+                    MusicManager.getInstance().start(Sounds.LOSELIFE);
+                }
             }
         }
 

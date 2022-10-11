@@ -11,19 +11,17 @@ public class PacmanController extends GameController {
         super(arena);
     }
 
-    public void moveHeroLeft() {
+    public void movePacmanLeft() {
         movePacman(arena.getPacman().getPosition().getLeft());
     }
 
-    public void moveHeroRight() {
+    public void movePacmanRight() {
         movePacman(arena.getPacman().getPosition().getRight());
     }
 
-    public void moveHeroUp() {
-        movePacman(arena.getPacman().getPosition().getUp());
-    }
+    public void movePacmanUp() {movePacman(arena.getPacman().getPosition().getUp());}
 
-    public void moveHeroDown() {
+    public void movePacmanDown() {
         movePacman(arena.getPacman().getPosition().getDown());
     }
 
@@ -50,10 +48,10 @@ public class PacmanController extends GameController {
 
     public boolean doAction(GUI.ACTION action) {
         Position initial = arena.getPacman().getPosition();
-        if (action == GUI.ACTION.UP) moveHeroUp();
-        if (action == GUI.ACTION.RIGHT) moveHeroRight();
-        if (action == GUI.ACTION.DOWN) moveHeroDown();
-        if (action == GUI.ACTION.LEFT) moveHeroLeft();
+        if (action == GUI.ACTION.UP) movePacmanUp();
+        if (action == GUI.ACTION.RIGHT) movePacmanRight();
+        if (action == GUI.ACTION.DOWN) movePacmanDown();
+        if (action == GUI.ACTION.LEFT) movePacmanLeft();
         Position after = arena.getPacman().getPosition();
         if(initial.equals(after)){
            return false;

@@ -157,9 +157,9 @@ public class GameOverController implements StateController, KeyListener {
     }
 
     @Override
-    public void keyReleased(KeyEvent e) {
+    public void keyReleased(KeyEvent e) {}
 
-    }
+
     public void setScore(int score){
         getScreenView().setScore(score);
         this.newScore = score;
