@@ -9,5 +9,12 @@ import java.util.List;
 
 public class LoaderArenaBuilderTest {
 
+    @Test
+    void getWidth() {
+
+
+    }
+
+
 
 }

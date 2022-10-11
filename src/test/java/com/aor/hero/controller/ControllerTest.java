@@ -68,7 +68,7 @@ public class ControllerTest {
             controllerSpy.changeState(ApplicationState.Game);
 
             // then
-            assertTrue(controllerSpy.getStateControler() instanceof PlayControllerTest);
+            assertTrue(controllerSpy.getStateControler() instanceof PlayController);
             assertEquals(controllerSpy.getApplicationState(), ApplicationState.Game);
         }
     }

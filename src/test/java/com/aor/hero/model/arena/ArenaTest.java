@@ -41,4 +41,70 @@ public class ArenaTest {
         arena.setPowers(powers);
         Assertions.assertEquals(powers, arena.getPowers());
     }
+
+    @Test
+    void isEmptyFALSE() {
+
+        Arena arena = new Arena(50, 75);
+
+        Position position = new Position(10,15);
+        walls.add(new Wall(10,15));
+        arena.setWalls(walls);
+
+        boolean isEmpty = arena.isEmpty(position);
+
+        Assertions.assertEquals(false, isEmpty);
+    }
+
+    @Test
+    void isEmptyTRUE() {
+
+        Arena arena = new Arena(50, 75);
+
+        Position position = new Position(10,17);
+        walls.add(new Wall(10,15));
+        arena.setWalls(walls);
+
+        boolean isEmpty = arena.isEmpty(position);
+
+        Assertions.assertEquals(true, isEmpty);
+    }
+
+    @Test
+    void retrieveFood() {
+
+        Arena arena = new Arena(50,75);
+        arena.setPacman(new Pacman(10,15));
+
+        foods.add(new Food(10,15));
+        foods.add(new Food(17,15));
+        arena.setFoods(foods);
+
+        arena.retrieveFood();
+
+        Assertions.assertEquals(1, foods.size());
+        Assertions.assertEquals(10,arena.getPacman().getScore());
+    }
+
+    @Test
+    void retrievePowers() {
+
+        Arena arena = new Arena(50,75);
+        arena.setPacman(new Pacman(10,15));
+
+        powers.add(new Power(10,15));
+        powers.add(new Power(18,20));
+        arena.setPowers(powers);
+
+        ghosts.add(new Ghost(10,10));
+        arena.setGhosts(ghosts);
+
+
+        arena.retrievePowers();
+
+        Assertions.assertEquals(1, powers.size());
+        Assertions.assertEquals(100, arena.getPacman().getScore());
+        Assertions.assertEquals(true, arena.getPacman().isPower_status());
+        Assertions.assertEquals(true, arena.getGhosts().get(0).isPowerON());
+    }
 }
