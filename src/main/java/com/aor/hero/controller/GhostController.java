@@ -83,14 +83,15 @@ public class GhostController extends GameController {
         }
 
         //Lose lifes & Kill ghosts
-        LoseLifes_KillGhosts(ghost);
+        if (arena.getPacman().getPosition().equals(ghost.getPosition())) {
+            LoseLifes_KillGhosts(ghost);
+        }
 
         //Reborn
         rebornGhost(ghost);
     }
 
-    private void LoseLifes_KillGhosts(Ghost ghost){
-        if (arena.getPacman().getPosition().equals(ghost.getPosition())) {
+    protected void LoseLifes_KillGhosts(Ghost ghost){
             if (arena.getPacman().isPower_status()) {
                 ghost.setAlive(false);
                 if (!MusicManager.getInstance().isPlaying(Sounds.KILL)){
@@ -103,9 +104,8 @@ public class GhostController extends GameController {
                 }
             }
         }
-    }
 
-    private void rebornGhost(Ghost ghost){
+    protected void rebornGhost(Ghost ghost){
         if(ghost.getPosition().equals(new Position(10,8))){
             ghost.setAlive(true);
         }

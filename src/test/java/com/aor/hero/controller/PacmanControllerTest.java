@@ -17,22 +17,26 @@ public class PacmanControllerTest {
 
         Mockito.when(arena.getPacman()).thenReturn(pacman);
 
-        Mockito.when(arena.isEmpty(new Position(11,10))).thenReturn(false);
-        Mockito.when(arena.isEmpty(new Position(9,10))).thenReturn(false);
-        Mockito.when(arena.isEmpty(new Position(10,9))).thenReturn(false);
-        Mockito.when(arena.isEmpty(new Position(10,11))).thenReturn(true);
+        Mockito.when(arena.isEmpty(Mockito.any(Position.class))).thenReturn(true);
         PacmanController pacmanController =new PacmanController(arena);
 
         //When
-        pacmanController.movePacmanRight();
         pacmanController.movePacmanLeft();
+        Assertions.assertEquals(9, pacman.getPosition().getX());
         pacmanController.movePacmanUp();
+        Assertions.assertEquals(9,pacman.getPosition().getY());
         pacmanController.movePacmanDown();
+        Assertions.assertEquals(10, pacman.getPosition().getY());
 
         //Then
-        Mockito.verify(arena,Mockito.times(1)).retrieveFood();
-        Mockito.verify(arena,Mockito.times(1)).retrievePowers();
-        Mockito.verify(arena,Mockito.times(1)).isGhost();
+        Mockito.verify(arena,Mockito.times(3)).retrieveFood();
+        Mockito.verify(arena,Mockito.times(3)).retrievePowers();
+        Mockito.verify(arena,Mockito.times(3)).isGhost();
+
+        //When
+        pacman.setPosition(new Position(20,9));
+        pacmanController.movePacmanRight();
+        Assertions.assertEquals(0, pacman.getPosition().getX());
     }
 
 
@@ -40,12 +44,9 @@ public class PacmanControllerTest {
     void doAction_changeSide(){
         Arena arena = Mockito.mock(Arena.class);
         Pacman pacman = Mockito.spy(new Pacman(10,10));
+        Mockito.when(arena.isEmpty(Mockito.any(Position.class))).thenReturn(true);
         Mockito.when(arena.getPacman()).thenReturn(pacman);
-        Mockito.when(arena.isEmpty(new Position(10,9))).thenReturn(true);
-        Mockito.when(arena.isEmpty(new Position(11,9))).thenReturn(true);
-        Mockito.when(arena.isEmpty(new Position(11,10))).thenReturn(true);
-        Mockito.when(arena.isEmpty(new Position(10,10))).thenReturn(false);
-        PacmanController pacmanController =new PacmanController(arena);
+        PacmanController pacmanController = new PacmanController(arena);
 
 
         //When
@@ -63,10 +64,21 @@ public class PacmanControllerTest {
         pacmanController.doAction(GUI.ACTION.LEFT);
         pacmanController.changeSide(GUI.ACTION.LEFT);
         //Then
-        Assertions.assertEquals(11, pacman.getPosition().getX());
+        Assertions.assertEquals(10, pacman.getPosition().getX());
         Assertions.assertEquals(10, pacman.getPosition().getY());
 
         Mockito.verify(pacman,Mockito.times(4)).setSide(Mockito.anyChar());
+
+
+        pacmanController.doAction(GUI.ACTION.RIGHT);
+        Assertions.assertEquals(11, pacman.getPosition().getX());
+        pacmanController.doAction(GUI.ACTION.LEFT);
+        Assertions.assertEquals(10, pacman.getPosition().getX());
+
+        Assertions.assertTrue(pacmanController.doAction(GUI.ACTION.RIGHT));
+        Mockito.when(arena.isEmpty(Mockito.any(Position.class))).thenReturn(false);
+        Assertions.assertFalse(pacmanController.doAction(GUI.ACTION.RIGHT));
+
     }
 
     @Test

@@ -66,4 +66,21 @@ public class PositionTest {
     }
 
 
+    @Test
+    void getRandomneighbour(){
+        int flag0 = 0;
+        int flag1 = 0;
+        int flag2 = 0;
+        int flag3 = 0;
+        Position position = Mockito.spy(new Position(0,0));
+
+        for (int i = 0; i<200; i++){
+            position.getRandomNeighbour();
+        }
+
+        Mockito.verify(position,Mockito.atLeast(1)).getUp();
+        Mockito.verify(position,Mockito.atLeast(1)).getDown();
+        Mockito.verify(position,Mockito.atLeast(1)).getLeft();
+        Mockito.verify(position,Mockito.atLeast(1)).getRight();
+    }
 }

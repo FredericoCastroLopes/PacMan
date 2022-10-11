@@ -78,11 +78,12 @@ public class ArenaTest {
 
         foods.add(new Food(10,15));
         foods.add(new Food(17,15));
+        foods.add(new Food(18,15));
         arena.setFoods(foods);
 
         arena.retrieveFood();
 
-        Assertions.assertEquals(1, foods.size());
+        Assertions.assertEquals(2, foods.size());
         Assertions.assertEquals(10,arena.getPacman().getScore());
     }
 
@@ -94,6 +95,7 @@ public class ArenaTest {
 
         powers.add(new Power(10,15));
         powers.add(new Power(18,20));
+        powers.add(new Power(19,20));
         arena.setPowers(powers);
 
         ghosts.add(new Ghost(10,10));
@@ -102,7 +104,7 @@ public class ArenaTest {
 
         arena.retrievePowers();
 
-        Assertions.assertEquals(1, powers.size());
+        Assertions.assertEquals(2, powers.size());
         Assertions.assertEquals(100, arena.getPacman().getScore());
         Assertions.assertEquals(true, arena.getPacman().isPower_status());
         Assertions.assertEquals(true, arena.getGhosts().get(0).isPowerON());
