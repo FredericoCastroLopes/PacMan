@@ -1,2 +1,4 @@
-package com.aor.hero.model.menu;public class MenuItemTest {
+package com.aor.hero.model.menu;
+
+public class MenuItemTest {
 }
