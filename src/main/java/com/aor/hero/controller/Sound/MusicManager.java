@@ -3,19 +3,17 @@ package com.aor.hero.controller.Sound;
 public class MusicManager {
 
     private Music soundTrack;
-    private Music shoot;
-    private Music enemyShoot;
-    private Music rocket;
-    private Music destruction;
+    private Music kill;
+    private Music loselife;
+    private Music pacman;
     private Music gameOver;
     private static MusicManager musicManager;
 
     private MusicManager() {
         soundTrack = new Music("/src/main/resources/Sounds/soundTrack.wav");
-        shoot = new Music("/src/main/resources/Sounds/shoot.wav");
-        enemyShoot = new Music("/src/main/resources/Sounds/enemyShoot.wav");
-        rocket = new Music("/src/main/resources/Sounds/rocket.wav");
-        destruction = new Music("/src/main/resources/Sounds/destruction.wav");
+        kill = new Music("/src/main/resources/Sounds/siuu.wav");
+        loselife = new Music("/src/main/resources/Sounds/lose_life.wav");
+        pacman = new Music("/src/main/resources/Sounds/pacman_eating_2.wav");
         gameOver = new Music("/src/main/resources/Sounds/gameOver.wav");
     }
 
@@ -30,41 +28,37 @@ public class MusicManager {
         this.soundTrack = soundTrack;
     }
 
-    public void setShoot(Music shoot) {
-        this.shoot = shoot;
+    public void setKill(Music kill) {
+        this.kill = kill;
     }
 
-    public void setRocket(Music rocket) {
-        this.rocket = rocket;
+    public void setLoselife(Music loselife) {
+        this.loselife = loselife;
     }
 
-    public void setDestruction(Music destruction) {
-        this.destruction = destruction;
+    public void setPacman(Music pacman) {
+        this.pacman = pacman;
     }
 
     public void setGameOver(Music gameOver) {
         this.gameOver = gameOver;
     }
 
-    public void setEnemyShoot(Music enemyShoot) {
-        this.enemyShoot = enemyShoot;
-    }
 
     public void start(Sounds sound) {
         switch(sound) {
             case SOUNDTRACK -> soundTrack.startLoop();
-            case SHOOT -> shoot.start();
-            case ROCKET -> rocket.startLoop();
-            case DESTRUCTION -> destruction.start();
+            case KILL -> kill.start();
+            case LOSELIFE -> loselife.start();
+            case PACMAN -> pacman.startLoop();
             case GAMEOVER -> gameOver.startLoop();
-            case ENEMYSHOOT -> enemyShoot.start();
         }
     }
 
     public void stop(Sounds sound) {
         switch(sound) {
             case SOUNDTRACK -> soundTrack.stop();
-            case ROCKET -> rocket.stop();
+            case PACMAN -> pacman.stop();
             case GAMEOVER -> gameOver.stop();
         }
     }
@@ -73,20 +67,18 @@ public class MusicManager {
     public boolean isPlaying(Sounds sound) {
         return switch (sound) {
             case SOUNDTRACK -> soundTrack.isPlaying();
-            case SHOOT -> shoot.isPlaying();
-            case ROCKET -> rocket.isPlaying();
-            case DESTRUCTION -> destruction.isPlaying();
+            case KILL -> kill.isPlaying();
+            case LOSELIFE -> loselife.isPlaying();
+            case PACMAN -> pacman.isPlaying();
             case GAMEOVER -> gameOver.isPlaying();
-            case ENEMYSHOOT -> enemyShoot.isPlaying();
         };
     }
 
     public void stopAll() {
         soundTrack.stop();
-        shoot.stop();
-        enemyShoot.stop();
-        rocket.stop();
-        destruction.stop();
+        kill.stop();
+        loselife.stop();
+        pacman.stop();
         gameOver.stop();
     }
 }

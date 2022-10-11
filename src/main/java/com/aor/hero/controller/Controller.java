@@ -14,7 +14,6 @@ public class Controller {
     private StateController stateControler;
     private ApplicationState applicationState;
 
-    private GameController gameController;
 
     public Controller(){
         changeState(ApplicationState.Menu);
@@ -33,7 +32,9 @@ public class Controller {
     public void changeState(ApplicationState state){
         applicationState = state;
         switch (state){
-            case Game -> stateControler= new PlayController(this);
+            case Game -> {
+                stateControler= new PlayController(this);
+            }
             case Menu -> {
                 if (!MusicManager.getInstance().isPlaying(Sounds.SOUNDTRACK)) {
                     MusicManager.getInstance().stopAll();

@@ -1,5 +1,7 @@
 package com.aor.hero.model.arena;
 
+import com.aor.hero.controller.Sound.MusicManager;
+import com.aor.hero.controller.Sound.Sounds;
 import com.aor.hero.model.Position;
 import com.aor.hero.model.elements.*;
 
@@ -70,9 +72,15 @@ public class Arena {
             if (ghost.getPosition().equals(pacman.getPosition())){
                 if (pacman.isPower_status()){
                     ghost.setAlive(false);
+                    if (!MusicManager.getInstance().isPlaying(Sounds.KILL)){
+                        MusicManager.getInstance().start(Sounds.KILL);
+                    }
                     break;
                 }else {
                     pacman.decreaseLifes();
+                    if (!MusicManager.getInstance().isPlaying(Sounds.LOSELIFE)){
+                        MusicManager.getInstance().start(Sounds.LOSELIFE);
+                    }
                 }
             }
     }

@@ -1,5 +1,7 @@
 package com.aor.hero.controller;
 
+import com.aor.hero.controller.Sound.MusicManager;
+import com.aor.hero.controller.Sound.Sounds;
 import com.aor.hero.gui.GUI;
 import com.aor.hero.model.Position;
 import com.aor.hero.model.arena.Arena;
@@ -36,6 +38,13 @@ public class PacmanController extends GameController {
             arena.retrieveFood();
             arena.retrievePowers();
             arena.isGhost();
+
+            if (!MusicManager.getInstance().isPlaying(Sounds.PACMAN)){
+                MusicManager.getInstance().start(Sounds.PACMAN);
+            }
+        }
+        else {
+            MusicManager.getInstance().stop(Sounds.PACMAN);
         }
     }
 
