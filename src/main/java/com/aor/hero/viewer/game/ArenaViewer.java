@@ -36,12 +36,12 @@ public class ArenaViewer {
         gui.refresh();
     }
 
-    private  <T extends Element> void drawElements(List<T> elements, ElementViewer<T> viewer) {
+    public   <T extends Element> void drawElements(List<T> elements, ElementViewer<T> viewer) {
         for (T element : elements)
             drawElement(element, viewer);
     }
 
-    private <T extends Element> void drawElement(T element, ElementViewer<T> viewer) {
+    public  <T extends Element> void drawElement(T element, ElementViewer<T> viewer) {
         viewer.drawElement(element, gui);
     }
 

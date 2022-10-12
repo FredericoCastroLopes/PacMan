@@ -1,11 +1,13 @@
 package com.aor.hero.viewer;
 
+import com.aor.hero.controller.Controller;
 import com.aor.hero.gui.GUI;
 import com.aor.hero.model.Position;
 import com.aor.hero.model.arena.Arena;
 import com.aor.hero.model.elements.*;
 import com.aor.hero.viewer.game.ArenaViewer;
 import com.aor.hero.viewer.game.Color;
+import com.aor.hero.viewer.game.ElementViewer;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -44,14 +46,11 @@ public class ArenaViewerTest {
         arenaViewer.draw(arenaMockito);
 
         //then
-        Mockito.verify(arenaMockito, Mockito.times(3)).getPacman();
-        Mockito.verify(arenaMockito, Mockito.times(1)).getFoods();
-        Mockito.verify(arenaMockito, Mockito.times(1)).getWalls();
-        Mockito.verify(arenaMockito, Mockito.times(1)).getPowers();
-        Mockito.verify(arenaMockito, Mockito.times(1)).getGhosts();
+        Mockito.verify(arenaViewer,Mockito.times(4)).drawElements(Mockito.anyList(),Mockito.any(ElementViewer.class));
+        Mockito.verify(arenaViewer,Mockito.times(3)).drawElement(Mockito.any(Element.class),Mockito.any(ElementViewer.class));
         Mockito.verify(guiMockito, Mockito.times(1)).clear();
         Mockito.verify(guiMockito, Mockito.times(1)).refresh();
-        Mockito.verify(guiMockito, Mockito.atLeast(2)).drawText(Mockito.any(Position.class), Mockito.anyString(), Mockito.anyString());
+        Mockito.verify(guiMockito, Mockito.times(5)).drawText(Mockito.any(Position.class), Mockito.anyString(), Mockito.anyString());
     }
 
     @Test
@@ -66,4 +65,5 @@ public class ArenaViewerTest {
         //then
         Mockito.verify(guiMockito,Mockito.times(1)).close();
     }
+
 }

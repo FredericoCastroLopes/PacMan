@@ -26,15 +26,4 @@ public abstract class View {
     }
 
     public abstract void draw() throws IOException;
-
-    public void setBackgroundColor(Color color){
-        getGraphics().setBackgroundColor(color.getColor());
-    }
-
-
-    public void setColor(char color){
-        Color c = Color.getColor(color);
-        if (c!=null)
-            setBackgroundColor(c);
-    }
 }

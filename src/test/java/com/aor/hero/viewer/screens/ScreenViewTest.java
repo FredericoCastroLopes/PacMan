@@ -41,6 +41,9 @@ public class ScreenViewTest extends Assertions {
             // then
             assertEquals(screenView.getFont(), font);
             assertNotNull(screenView.getGraphics());
+            Mockito.verify(screenView,times(3)).getScreen();
+            Mockito.verify(screenView,times(1)).setGraphics(Mockito.any(TextGraphics.class));
+            Assertions.assertTrue(screenView.getScreen() instanceof Screen);
             // final
             screenView.close();
         } catch (IOException e) {
@@ -135,5 +138,4 @@ public class ScreenViewTest extends Assertions {
         // then
         verify(component).removeKeyListener(keyListener);
     }
-
 }
