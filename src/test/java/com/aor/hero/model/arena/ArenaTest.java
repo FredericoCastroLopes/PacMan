@@ -119,6 +119,7 @@ public class ArenaTest {
 
         //Then
         Assertions.assertFalse(arena.getGhosts().get(0).isAlive());
+        Assertions.assertEquals(100, arena.getPacman().getScore());
 
         //When
         arena.getPacman().setPower_status(false);

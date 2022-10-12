@@ -79,6 +79,7 @@ public class GhostControllerTest {
         ghostController.moveGhosts();
 
         Assertions.assertFalse(ghosts.get(8).isAlive());
+        Assertions.assertEquals(100, arena.getPacman().getScore());
 
 
     }
