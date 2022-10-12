@@ -100,7 +100,7 @@ public class ArenaTest {
         arena.retrievePowers();
 
         Assertions.assertEquals(2, powers.size());
-        Assertions.assertEquals(100, arena.getPacman().getScore());
+        Assertions.assertEquals(50, arena.getPacman().getScore());
         Assertions.assertEquals(true, arena.getPacman().isPower_status());
         Assertions.assertEquals(true, arena.getGhosts().get(0).isPowerON());
     }

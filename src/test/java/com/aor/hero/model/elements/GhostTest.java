@@ -3,22 +3,27 @@ package com.aor.hero.model.elements;
 import com.aor.hero.model.Position;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import com.aor.hero.controller.Sound.MusicManager;
+import com.aor.hero.controller.Sound.Sounds;
+import org.mockito.MockedStatic;
 import org.mockito.Mockito;
+
+import static org.mockito.Mockito.times;
 
 public class GhostTest {
 
     @Test
-    void setPosition(){
+    void setPosition() {
         Ghost ghost = new Ghost(10, 15);
-        ghost.setPosition(new Position(10,15));
+        ghost.setPosition(new Position(10, 15));
 
         Assertions.assertEquals(10, ghost.getPosition().getX());
-        Assertions.assertEquals(15,ghost.getPosition().getY());
+        Assertions.assertEquals(15, ghost.getPosition().getY());
     }
 
     @Test
     void isAlive_setAlive() {
-        Ghost ghost = new Ghost(10,10);
+        Ghost ghost = new Ghost(10, 10);
         Assertions.assertEquals(true, ghost.isAlive());
         ghost.setAlive(false);
         Assertions.assertEquals(false, ghost.isAlive());
@@ -28,7 +33,7 @@ public class GhostTest {
 
     @Test
     void isPowerON_setPowerON() {
-        Ghost ghost = new Ghost(10,10);
+        Ghost ghost = new Ghost(10, 10);
         Assertions.assertEquals(false, ghost.isPowerON());
         ghost.setPowerON(true);
         Assertions.assertEquals(true, ghost.isPowerON());
@@ -36,13 +41,13 @@ public class GhostTest {
 
     @Test
     void getLastPosition() {
-        Ghost ghost = new Ghost(10,15);
-        ghost.setPosition(new Position(12,13));
+        Ghost ghost = new Ghost(10, 15);
+        ghost.setPosition(new Position(12, 13));
 
         Assertions.assertEquals(10, ghost.getLast_position().getX());
         Assertions.assertEquals(15, ghost.getLast_position().getY());
 
-        ghost.setPosition(new Position(11,17));
+        ghost.setPosition(new Position(11, 17));
 
         Assertions.assertEquals(12, ghost.getLast_position().getX());
         Assertions.assertEquals(13, ghost.getLast_position().getY());

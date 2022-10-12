@@ -22,10 +22,8 @@ public class Pacman extends Element {
 
     public void decreaseLifes() {
         this.lifes--;
-        if (!MusicManager.getInstance().isPlaying(Sounds.LOSELIFE)){
-            MusicManager.getInstance().start(Sounds.LOSELIFE);
+        MusicManager.getInstance().start(Sounds.LOSELIFE);
         }
-    }
 
     public int getLifes() {
         return lifes;

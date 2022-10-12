@@ -23,7 +23,7 @@ public class Ghost extends Element {
     }
 
     public void setAlive(boolean alive) {
-        if(isAlive() && !alive && !MusicManager.getInstance().isPlaying(Sounds.KILL)){
+        if(isAlive() && !alive){
                 MusicManager.getInstance().start(Sounds.KILL);
             }
         this.alive = alive;

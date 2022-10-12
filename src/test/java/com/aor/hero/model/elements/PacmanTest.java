@@ -1,9 +1,14 @@
 package com.aor.hero.model.elements;
 
+import com.aor.hero.controller.Sound.MusicManager;
+import com.aor.hero.controller.Sound.Sounds;
 import com.aor.hero.model.Position;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+
+import java.time.Instant;
 
 public class PacmanTest {
 
@@ -74,12 +79,21 @@ public class PacmanTest {
     }
 
     @Test
-    void reduceExtraPower(){
+    void ExtraPower(){
         Pacman pacman = new Pacman(10,15);
         pacman.setPower_status(true);
         Assertions.assertEquals(0,pacman.getExtra_powers());
         Assertions.assertTrue(pacman.isPower_status());
         pacman.setPower_status(true);
         Assertions.assertEquals(1,pacman.getExtra_powers());
+        pacman.reduceExtra_powers();
+        Assertions.assertEquals(0, pacman.getExtra_powers());
+    }
+
+    @Test
+    void decreaseLifesMusic(){
+        Pacman pacman = Mockito.spy(new Pacman(10,15));
+        pacman.decreaseLifes();
+        Assertions.assertEquals(2,pacman.getLifes());
     }
 }
