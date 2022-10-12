@@ -1,5 +1,7 @@
 package com.aor.hero.model.elements;
 
+import com.aor.hero.controller.Sound.MusicManager;
+import com.aor.hero.controller.Sound.Sounds;
 import com.aor.hero.model.Position;
 
 public class Ghost extends Element {
@@ -21,6 +23,9 @@ public class Ghost extends Element {
     }
 
     public void setAlive(boolean alive) {
+        if(isAlive() && !alive && !MusicManager.getInstance().isPlaying(Sounds.KILL)){
+                MusicManager.getInstance().start(Sounds.KILL);
+            }
         this.alive = alive;
     }
 

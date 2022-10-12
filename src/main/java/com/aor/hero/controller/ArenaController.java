@@ -70,9 +70,13 @@ public class ArenaController extends GameController {
                 powerStatus +=1;
             }
 
-            if (powerStatus>=120){
-                pacmanController.setPowerOFF();
-                ghostController.arena.notifyGhosts(false);
+            if (powerStatus>=60){
+                if (arena.getPacman().getExtra_powers() > 0){
+                    arena.getPacman().reduceExtra_powers();
+                }else {
+                    pacmanController.setPowerOFF();
+                    ghostController.arena.notifyGhosts(false);
+                }
                 powerStatus = 0;
             }
 
