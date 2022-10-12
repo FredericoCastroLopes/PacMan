@@ -35,6 +35,7 @@ public class LoaderArenaBuilder extends ArenaBuilder {
         for (String line : lines)
             width = Math.max(width, line.length());
         return width;
+
     }
 
     @Override
@@ -105,4 +106,9 @@ public class LoaderArenaBuilder extends ArenaBuilder {
         }
         return null;
     }
+
+    protected List<String> getLines() {
+        return lines;
+    }
+
 }
