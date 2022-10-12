@@ -127,7 +127,7 @@ public class ScreenViewTest extends Assertions {
         TerminalScreen screen = Mockito.mock(TerminalScreen.class);
 
         Mockito.when(screenView.getScreen()).thenReturn(screen);
-        Assertions.assertTrue(screenView.getScreen() instanceof Screen);
+        Assertions.assertNotNull(screenView.getScreen());
         Mockito.when(screen.getTerminal()).thenReturn(awtTerminalFrame);
         Mockito.when(awtTerminalFrame.getComponent(0)).thenReturn(component);
 

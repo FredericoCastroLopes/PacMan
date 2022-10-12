@@ -19,6 +19,7 @@ public class ArenaBuilderTest {
 
        //When
        Arena arena = arenaBuilder.createArena();
+       arena.setPacman(new Pacman(10,10));
 
        //Then
        Mockito.verify(arenaBuilder, Mockito.times(1)).createPacman();
@@ -31,6 +32,7 @@ public class ArenaBuilderTest {
        Assertions.assertTrue(arena.getWalls() instanceof List<Wall>);
        Assertions.assertTrue(arena.getFoods() instanceof List<Food>);
        Assertions.assertTrue(arena.getPowers() instanceof List<Power>);
+       Assertions.assertTrue(arena.getPacman() instanceof Pacman);
 
 
     }

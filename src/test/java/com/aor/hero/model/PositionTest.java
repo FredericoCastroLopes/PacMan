@@ -68,14 +68,12 @@ public class PositionTest {
 
     @Test
     void getRandomneighbour(){
-        int flag0 = 0;
-        int flag1 = 0;
-        int flag2 = 0;
-        int flag3 = 0;
         Position position = Mockito.spy(new Position(0,0));
+        Position position2;
 
         for (int i = 0; i<200; i++){
-            position.getRandomNeighbour();
+            position2 = position.getRandomNeighbour();
+            Assertions.assertNotNull(position2);
         }
 
         Mockito.verify(position,Mockito.atLeast(1)).getUp();
