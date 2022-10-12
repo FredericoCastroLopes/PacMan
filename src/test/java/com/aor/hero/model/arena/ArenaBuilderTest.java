@@ -16,10 +16,10 @@ public class ArenaBuilderTest {
     void createArena() {
 
        ArenaBuilder arenaBuilder = Mockito.spy(ArenaBuilder.class);
+       Mockito.when(arenaBuilder.createPacman()).thenReturn(new Pacman(10,10));
 
        //When
        Arena arena = arenaBuilder.createArena();
-       arena.setPacman(new Pacman(10,10));
 
        //Then
        Mockito.verify(arenaBuilder, Mockito.times(1)).createPacman();

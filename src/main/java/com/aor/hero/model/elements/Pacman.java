@@ -1,13 +1,15 @@
 package com.aor.hero.model.elements;
 
+import com.aor.hero.controller.Sound.MusicManager;
+import com.aor.hero.controller.Sound.Sounds;
+
 public class Pacman extends Element {
     private int lifes;
-
     private int score;
-
     private char side;
-
     private boolean power_status;
+
+    private int extra_powers;
 
     public Pacman(int x, int y) {
         super(x, y);
@@ -15,10 +17,14 @@ public class Pacman extends Element {
         this.score = 0;
         this.side = 'p';
         this.power_status = false;
+        extra_powers = 0;
     }
 
     public void decreaseLifes() {
         this.lifes--;
+        if (!MusicManager.getInstance().isPlaying(Sounds.LOSELIFE)){
+            MusicManager.getInstance().start(Sounds.LOSELIFE);
+        }
     }
 
     public int getLifes() {
@@ -37,8 +43,11 @@ public class Pacman extends Element {
         return power_status;
     }
 
-    public void setPower_status(boolean power_status) {
-        this.power_status = power_status;
+    public void setPower_status(boolean new_power_status) {
+        if(new_power_status && isPower_status()){
+            extra_powers ++;
+        }else
+        this.power_status = new_power_status;
     }
 
     public int getScore() {
@@ -55,5 +64,13 @@ public class Pacman extends Element {
             score = "0" + score;
         }
         return score;
+    }
+
+    public int getExtra_powers() {
+        return extra_powers;
+    }
+
+    public void reduceExtra_powers() {
+        this.extra_powers = extra_powers - 1;
     }
 }

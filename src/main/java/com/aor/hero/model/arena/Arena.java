@@ -68,21 +68,17 @@ public class Arena {
     }
 
     public void isGhost() {
-        for (Ghost ghost : ghosts)
-            if (ghost.getPosition().equals(pacman.getPosition())){
-                if (pacman.isPower_status()){
+        for (Ghost ghost : ghosts) {
+            if (ghost.getPosition().equals(pacman.getPosition())) {
+                if (pacman.isPower_status()) {
                     ghost.setAlive(false);
-                    if (!MusicManager.getInstance().isPlaying(Sounds.KILL)){
-                        MusicManager.getInstance().start(Sounds.KILL);
-                    }
+                    pacman.increaseScore(100);
                     break;
-                }else {
-                    pacman.decreaseLifes();
-                    if (!MusicManager.getInstance().isPlaying(Sounds.LOSELIFE)){
-                        MusicManager.getInstance().start(Sounds.LOSELIFE);
-                    }
+                } else {
+                    if (ghost.isAlive()) pacman.decreaseLifes();
                 }
             }
+        }
     }
 
     public void retrieveFood(){
@@ -98,7 +94,7 @@ public class Arena {
         for (int i = 0; i < this.powers.size(); i++) {
             if (pacman.getPosition().equals(powers.get(i).getPosition())) {
                 this.powers.remove(i);
-                pacman.increaseScore(100);
+                pacman.increaseScore(50);
                 pacman.setPower_status(true);
                 notifyGhosts(true);
             }

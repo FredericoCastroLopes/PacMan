@@ -92,16 +92,11 @@ public class GhostController extends GameController {
     }
 
     protected void LoseLifes_KillGhosts(Ghost ghost){
-            if (arena.getPacman().isPower_status()) {
+            if (arena.getPacman().isPower_status() & ghost.isAlive()) {
                 ghost.setAlive(false);
-                if (!MusicManager.getInstance().isPlaying(Sounds.KILL)){
-                    MusicManager.getInstance().start(Sounds.KILL);
-                }
+                arena.getPacman().increaseScore(100);
             } else {
-                arena.getPacman().decreaseLifes();
-                if (!MusicManager.getInstance().isPlaying(Sounds.LOSELIFE)){
-                    MusicManager.getInstance().start(Sounds.LOSELIFE);
-                }
+                if(ghost.isAlive())arena.getPacman().decreaseLifes();
             }
         }
 

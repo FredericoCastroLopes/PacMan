@@ -72,4 +72,14 @@ public class PacmanTest {
 
         Assertions.assertEquals("0150", pacman.scoretoString());
     }
+
+    @Test
+    void reduceExtraPower(){
+        Pacman pacman = new Pacman(10,15);
+        pacman.setPower_status(true);
+        Assertions.assertEquals(0,pacman.getExtra_powers());
+        Assertions.assertTrue(pacman.isPower_status());
+        pacman.setPower_status(true);
+        Assertions.assertEquals(1,pacman.getExtra_powers());
+    }
 }
