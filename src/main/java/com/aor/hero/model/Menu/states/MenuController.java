@@ -12,7 +12,7 @@ import java.io.IOException;
 public class MenuController implements StateController, KeyListener {
 
     private final Controller context;
-    private final ScreenView screenView;
+    private ScreenView screenView;
     private final Menu menu;
 
     public MenuController(Controller context){
@@ -73,5 +73,9 @@ public class MenuController implements StateController, KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
+    }
+
+    public void setScreenView(ScreenView screenView) {
+        this.screenView = screenView;
     }
 }

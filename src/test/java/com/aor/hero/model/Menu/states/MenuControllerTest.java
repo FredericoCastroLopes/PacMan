@@ -7,6 +7,7 @@ import com.aor.hero.viewer.screens.ScreenView;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import java.awt.*;
@@ -36,7 +37,7 @@ public class MenuControllerTest {
         screenViewMock = Mockito.mock(ScreenView.class);
         screenMock = Mockito.mock(TerminalScreen.class);
         Mockito.when(screenViewMock.getScreen()).thenReturn(screenMock);
-        Mockito.when(menuControllerSpy.getScreenView()).thenReturn(screenViewMock);
+        menuControllerSpy.setScreenView(screenViewMock);
 
     }
 

@@ -32,7 +32,7 @@ public class LeaderboardControllerTest {
         screenViewMock = Mockito.mock(ScreenView.class);
         screenMock = Mockito.mock(TerminalScreen.class);
         Mockito.when(screenViewMock.getScreen()).thenReturn(screenMock);
-        Mockito.when(leaderboardControllerSpy.getScreenView()).thenReturn(screenViewMock);
+        leaderboardControllerSpy.setScreenView(screenViewMock);
     }
     @Test
     void processKeyEscape(){

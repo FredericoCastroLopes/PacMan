@@ -31,7 +31,7 @@ public class InstructionsControllerTest {
         screenViewMock = Mockito.mock(ScreenView.class);
         screenMock = Mockito.mock(TerminalScreen.class);
         Mockito.when(screenViewMock.getScreen()).thenReturn(screenMock);
-        Mockito.when(instructionControllerSpy.getScreenView()).thenReturn(screenViewMock);
+        instructionControllerSpy.setScreenView(screenViewMock);
     }
     @Test
     void processKeyEscape(){

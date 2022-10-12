@@ -1,6 +1,7 @@
 package com.aor.hero.model.Menu.states;
 
 import com.aor.hero.controller.Controller;
+import com.aor.hero.viewer.screens.GameOverScreen;
 import com.aor.hero.viewer.screens.ScreenView;
 import com.aor.hero.viewer.screens.InstructionScreen;
 
@@ -11,7 +12,7 @@ import java.io.IOException;
 
 public class InstructionsController implements StateController, KeyListener {
     private final Controller context;
-    private final ScreenView screenView;
+    private ScreenView screenView;
 
     public InstructionsController(Controller context){
         this.context = context;
@@ -53,4 +54,8 @@ public class InstructionsController implements StateController, KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {}
+
+    public void setScreenView(ScreenView screenView) {
+        this.screenView = screenView;
+    }
 }

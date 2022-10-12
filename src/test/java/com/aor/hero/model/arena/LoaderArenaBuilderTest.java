@@ -87,5 +87,6 @@ public class LoaderArenaBuilderTest {
         LoaderArenaBuilder loaderArenaBuilder = Mockito.spy(new LoaderArenaBuilder(1));
 
         Assertions.assertNotNull(loaderArenaBuilder.getLines());
+        Assertions.assertEquals(21,loaderArenaBuilder.getLines().size());
     }
 }

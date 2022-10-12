@@ -10,9 +10,9 @@ import java.io.IOException;
 
 public class LeaderboardController implements StateController, KeyListener {
     private final Controller context;
-    private final ScreenView screenView;
+    private ScreenView screenView;
 
-    public LeaderboardController(Controller context){
+    public LeaderboardController(Controller context) {
         this.context = context;
         screenView = new LeaderboardScreen();
     }
@@ -41,7 +41,8 @@ public class LeaderboardController implements StateController, KeyListener {
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {}
+    public void keyTyped(KeyEvent e) {
+    }
 
     @Override
     public void keyPressed(KeyEvent e) {
@@ -51,5 +52,10 @@ public class LeaderboardController implements StateController, KeyListener {
     }
 
     @Override
-    public void keyReleased(KeyEvent e) {}
+    public void keyReleased(KeyEvent e) {
+    }
+
+    public void setScreenView(ScreenView screenView) {
+        this.screenView = screenView;
+    }
 }
