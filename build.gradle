@@ -30,5 +30,5 @@ test {
 pitest {
     junit5PluginVersion = '0.12'
     pitestVersion = '1.7.4'
-    excludedClasses =['com.aor.hero.Application']
+    excludedClasses =['com.aor.hero.Application','com.aor.hero.controller.PlayController', 'com.aor.hero.gui.LanternaGUI', 'com.aor.hero.controller.ArenaController']
 }

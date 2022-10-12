@@ -18,7 +18,7 @@ public class ArenaBuilderTest {
        ArenaBuilder arenaBuilder = Mockito.spy(ArenaBuilder.class);
 
        //When
-       arenaBuilder.createArena();
+       Arena arena = arenaBuilder.createArena();
 
        //Then
        Mockito.verify(arenaBuilder, Mockito.times(1)).createPacman();
@@ -26,6 +26,13 @@ public class ArenaBuilderTest {
        Mockito.verify(arenaBuilder, Mockito.times(1)).createWalls();
        Mockito.verify(arenaBuilder, Mockito.times(1)).createFoods();
        Mockito.verify(arenaBuilder, Mockito.times(1)).createPowers();
+
+       Assertions.assertTrue(arena.getGhosts() instanceof List<Ghost>);
+       Assertions.assertTrue(arena.getWalls() instanceof List<Wall>);
+       Assertions.assertTrue(arena.getFoods() instanceof List<Food>);
+       Assertions.assertTrue(arena.getPowers() instanceof List<Power>);
+
+
     }
 
     @Test
