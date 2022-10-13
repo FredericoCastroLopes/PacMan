@@ -28,3 +28,7 @@ The following screenshots ilustrate the general look of our game, as well as the
 **Initial Menu**
 
 ![](docs/image/menu.png)
+
+### UML
+
+![](docs/image/PacMan_UML.png)
