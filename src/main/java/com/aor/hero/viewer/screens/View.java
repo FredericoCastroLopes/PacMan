@@ -1,8 +1,5 @@
 package com.aor.hero.viewer.screens;
 
-import com.aor.hero.viewer.game.Color;
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 import java.io.IOException;

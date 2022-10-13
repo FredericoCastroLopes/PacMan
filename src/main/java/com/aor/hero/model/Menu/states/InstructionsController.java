@@ -1,7 +1,6 @@
 package com.aor.hero.model.Menu.states;
 
 import com.aor.hero.controller.Controller;
-import com.aor.hero.viewer.screens.GameOverScreen;
 import com.aor.hero.viewer.screens.ScreenView;
 import com.aor.hero.viewer.screens.InstructionScreen;
 

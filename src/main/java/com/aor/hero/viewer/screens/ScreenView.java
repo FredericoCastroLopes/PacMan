@@ -95,7 +95,7 @@ public abstract class ScreenView{
 
     public Font changeFont(String path, int size){
         File fontFile = new File(path);
-        Font font = null;
+        Font font;
         try {
             font = Font.createFont(Font.TRUETYPE_FONT,fontFile);
         } catch (FontFormatException e) {

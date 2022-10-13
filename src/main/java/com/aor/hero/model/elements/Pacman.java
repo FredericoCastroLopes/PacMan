@@ -46,6 +46,7 @@ public class Pacman extends Element {
             extra_powers ++;
         }else
         this.power_status = new_power_status;
+
     }
 
     public int getScore() {

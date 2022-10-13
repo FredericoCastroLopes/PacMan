@@ -17,7 +17,7 @@ public class Menu {
                 case Play -> selected = MenuItem.LeaderBoard;
                 case LeaderBoard -> selected = MenuItem.Instructions;
                 case Instructions,Exit -> selected = MenuItem.Exit;
-            };
+            }
         }
     }
 

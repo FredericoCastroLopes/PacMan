@@ -1,7 +1,5 @@
 package com.aor.hero.model.arena;
 
-import com.aor.hero.controller.Sound.MusicManager;
-import com.aor.hero.controller.Sound.Sounds;
 import com.aor.hero.model.Position;
 import com.aor.hero.model.elements.*;
 

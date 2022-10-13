@@ -3,6 +3,7 @@ package com.aor.hero.model.elements;
 import com.aor.hero.model.Position;
 
 public abstract class Element {
+
     protected Position position;
 
     public Element(int x, int y) {

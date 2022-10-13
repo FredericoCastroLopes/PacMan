@@ -19,7 +19,6 @@ import java.net.URL;
 
 public class LanternaGUI implements GUI {
 
-    private boolean powerON = false;
     private final TerminalScreen screen;
 
     public LanternaGUI(int width, int height) throws IOException, FontFormatException, URISyntaxException {
