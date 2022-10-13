@@ -30,6 +30,8 @@ public class ArenaController extends GameController {
         int frameTime = 1000 / FPS;
         long lastMonsterMovement = 0;
         long powerStatus = 0;
+        long newlevel = 0;
+        long ghost_movement = 200;
         GUI.ACTION last_action = GUI.ACTION.NONE;
         GUI.ACTION saved_action = GUI.ACTION.NONE;
 
@@ -61,9 +63,14 @@ public class ArenaController extends GameController {
             //ChangeSide
             pacmanController.changeSide(last_action);
 
-            if (startTime - lastMonsterMovement > 200) {
+            if (startTime - lastMonsterMovement > ghost_movement) {
                 ghostController.moveGhosts();
                 lastMonsterMovement = startTime;
+            }
+
+            if(startTime-newlevel > 3000){
+                ghost_movement = (long) (ghost_movement * 0.95);
+                newlevel = startTime;
             }
 
             if (arena.getPacman().isPower_status()){
